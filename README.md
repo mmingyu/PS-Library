@@ -3,7 +3,7 @@
 PS를 할 때 반복적으로 사용되는 알고리즘들을 구현할 예정입니다.
 
 ## Data Structure
-- Segment Tree (Sum, Min, Max) 
+- Segment Tree (Sum, Min) 
 - Segment Tree Lazy Propagation 
 - Fenwick Tree 
 
@@ -27,8 +27,7 @@ PS를 할 때 반복적으로 사용되는 알고리즘들을 구현할 예정�
 - Rabin-Karp
 - Trie
 
-## TODO
-- Segment Tree (Sum, Min, Max) 
+## TODO 
 - Segment Tree Lazy Propagation 
 - Fenwick Tree 
 - Matrix 
