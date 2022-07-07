@@ -8,7 +8,7 @@ private:
     const T INF;
     vector<T> tree;
 public:
-    SegTree(int N, int INF) : N(N), INF(INF) { tree.resize(4 * N); }
+    SegTree(int N, int INF = 2.1e9) : N(N), INF(INF) { tree.resize(4 * N); }
 
     void update(int idx, T val, int node, int s, int e) {
         if (idx < s || idx > e) return;
@@ -31,14 +31,13 @@ public:
     T query(int l, int r) { return query(l, r, 1, 0, N); }
 };
 
-constexpr int INF = 2e9;
 
 int main() {
     // This is example of Usage
     // problem link : icpc.me/14438
     ios::sync_with_stdio(false); cin.tie(nullptr);
     int n; cin >> n;
-    SegTree<int> seg(n + 1, INF);
+    SegTree<int> seg(n + 1); // == SegTree<int> seg(n + 1, 2.1e9);
     for (int i = 1; i <= n; i++) {
         int x; cin >> x;
         seg.update(i, x);
