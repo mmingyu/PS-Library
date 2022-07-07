@@ -8,7 +8,7 @@ private:
     const T INF;
     vector<T> tree;
 public:
-    SegTree(int N, int INF = 2.1e9) : N(N), INF(INF) { tree.resize(4 * N); }
+    SegTree(int N, T INF = 2.1e9) : N(N), INF(INF) { tree.resize(4 * N); }
 
     void update(int idx, T val, int node, int s, int e) {
         if (idx < s || idx > e) return;
