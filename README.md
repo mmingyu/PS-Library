@@ -28,7 +28,6 @@ PS를 할 때 반복적으로 사용되는 알고리즘들을 구현할 예정�
 - Trie
 
 ## TODO 
-- Segment Tree Lazy Propagation 
 - Fenwick Tree 
 - Matrix 
 - Line-segment Intersection 
