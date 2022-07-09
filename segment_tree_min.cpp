@@ -7,20 +7,15 @@ private:
     const int N;
     const T INF;
     vector<T> tree;
-public:
-    SegTree(int N, T INF = 2.1e9) : N(N), INF(INF) { tree.resize(4 * N); }
-
+    
     void update(int idx, T val, int node, int s, int e) {
         if (idx < s || idx > e) return;
         if (s == e) { tree[node] = val; return; }
         int mid = s + e >> 1;
         update(idx, val, node << 1, s, mid);
         update(idx, val, node << 1 | 1, mid + 1, e);
-        
         tree[node] = min(tree[node << 1], tree[node << 1 | 1]);
     }
-    void update(int idx, T val) { update(idx, val, 1, 0, N); }
-
 
     T query(int l, int r, int node, int s, int e) {
         if (l <= s && e <= r) return tree[node];
@@ -28,6 +23,10 @@ public:
         int mid = s + e >> 1;
         return min(query(l, r, node << 1, s, mid), query(l, r, node << 1 | 1, mid + 1, e));
     }
+
+public:
+    SegTree(int N, T INF = 2.1e9) : N(N), INF(INF) { tree.resize(4 * N); }
+    void update(int idx, T val) { update(idx, val, 1, 0, N); }
     T query(int l, int r) { return query(l, r, 1, 0, N); }
 };
 
