@@ -6,9 +6,6 @@ class SegTree {
 private:
     const int N;
     vector<T> tree;
-public:
-    SegTree(int N) : N(N) { tree.resize(4 * N); }
-
     void update(int idx, T diff, int node, int s, int e) {
         if (idx < s || idx > e) return;
         tree[node] += diff;
@@ -17,15 +14,16 @@ public:
         update(idx, diff, node << 1, s, mid);
         update(idx, diff, node << 1 | 1, mid + 1, e);
     }
-    void update(int idx, T diff) { update(idx, diff, 1, 0, N); }
-
-
     T query(int l, int r, int node, int s, int e) {
         if (l <= s && e <= r) return tree[node];
         if (r < s || e < l) return 0;
         int mid = s + e >> 1;
         return query(l, r, node << 1, s, mid) + query(l, r, node << 1 | 1, mid + 1, e);
     }
+
+public:
+    SegTree(int N) : N(N) { tree.resize(4 * N); }
+    void update(int idx, T diff) { update(idx, diff, 1, 0, N); }
     T query(int l, int r) { return query(l, r, 1, 0, N); }
 };
 
