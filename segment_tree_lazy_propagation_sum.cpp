@@ -7,6 +7,7 @@ private:
     const int N;
     vector<T> tree;
     vector<T> lazy;
+    
     void propagate(int n, int s, int e) {
         if (lazy[n] == 0) return;
         tree[n] += (e - s + 1) * lazy[n];
@@ -16,15 +17,13 @@ private:
         }
         lazy[n] = 0;
     }
+
     void update(int qs, int qe, T diff, int n, int s, int e) {
         propagate(n, s, e);
         if (e < qs || s > qe) return;
         if (qs <= s && e <= qe) {
-            tree[n] += (e - s + 1) * diff;
-            if (s != e) {
-                lazy[n << 1] += diff;
-                lazy[n << 1 | 1] += diff;
-            }
+            lazy[n] = diff;
+            propagate(n, s, e);
             return;
         }
         int mid = s + e >> 1;
@@ -40,6 +39,7 @@ private:
         int mid = s + e >> 1;
         return query(qs, qe, n << 1, s, mid) + query(qs, qe, n << 1 | 1, mid + 1, e);
     }
+
 public:
     LazySegtree(int N) : N(N) {
         tree.resize(N << 2);
