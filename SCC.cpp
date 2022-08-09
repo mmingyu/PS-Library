@@ -2,9 +2,10 @@
 using namespace std;
 
 namespace tarzan {
-    constexpr int N = 3003;
-    int visited[N], scc_id[N], scc_cnt, v_cnt, n;
+    constexpr int N = 1003;
+    int visited[N], scc_id[N], scc_cnt, n;
     vector<int> adj[N];
+    vector<vector<int>> scc;
     stack<int> st;
     int dfs(int cur) {
         int ret = visited[cur] = scc_cnt++;
@@ -16,20 +17,23 @@ namespace tarzan {
         }
 
         if (ret == visited[cur]) {
+            vector<int> v;
             while (true) {
                 int t = st.top(); st.pop();
                 scc_id[t] = scc_cnt;
+                v.push_back(t);
                 if (t == cur) break;
             }
+            scc.push_back(v);
             scc_cnt++;
         }
         return ret;
     }
 
-    void scc() {
+    void get_scc() {
         memset(scc_id, -1, sizeof(scc_id));
         memset(visited, -1, sizeof(visited));
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             if (visited[i] == -1) dfs(i);
         }
     }
@@ -37,5 +41,5 @@ namespace tarzan {
 
 int main() {
     cin >> tarzan::n;
-    tarzan::scc();
+    tarzan::get_scc();
 }
