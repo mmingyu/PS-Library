@@ -20,7 +20,7 @@ namespace tarzan {
             vector<int> v;
             while (true) {
                 int t = st.top(); st.pop();
-                scc_id[t] = sz(scc) + 1;
+                scc_id[t] = scc.size() + 1;
                 v.push_back(t);
                 if (t == cur) break;
             }
