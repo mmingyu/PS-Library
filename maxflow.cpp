@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class NetworkFlow {
+class MaxFlow {
 private:
     struct Edge { 
         int cap, flow, to, rev; 
@@ -12,7 +12,7 @@ private:
     vector<Edge*> epar;
     vector<vector<Edge>> adj;
 public:
-    NetworkFlow(int N) : N(N) {
+    MaxFlow(int N) : N(N) {
         par.resize(N);
         epar.resize(N);
         adj.resize(N);
@@ -54,5 +54,5 @@ public:
 };
 
 int main() {
-    NetworkFlow net(100);
+    MaxFlow net(100);
 }
