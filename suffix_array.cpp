@@ -15,7 +15,7 @@ vector<int> suffixArray(const string &s) {
             // a~a+k, b~b+k 비교
             if (pos[a] != pos[b]) return pos[a] < pos[b];
             if (a + k < n && b + k < n) return pos[a + k] < pos[b + k];
-            return a < b; // 짧은게 먼저 옴
+            return a > b; // 짧은게 먼저 옴
         };
         sort(sa.begin(), sa.end(), cmp);
         // 그룹 번호 다시 매겨줌: cmp(sa[i-1], sa[i]) -> 그룹 다르면 +1
