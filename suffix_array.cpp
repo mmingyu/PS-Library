@@ -1,6 +1,7 @@
+// https://github.com/justiceHui/SSU-SCCC-Study/blob/master/2022-autumn-adv/slide/02.pdf
+
 #include <bits/stdc++.h>
 using namespace std;
-// https://github.com/justiceHui/SSU-SCCC-Study/blob/master/2022-autumn-adv/slide/02.pdf
 
 // O(Nlog^2N) suffixArray
 vector<int> suffixArray(const string &s) {
