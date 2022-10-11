@@ -28,7 +28,7 @@ struct LCP {
     void getLCP() {
         for (int i = 0, j = 0; i < n; i++, j = max(j-1, 0)) {
             if (pos[i] == 0) continue;
-            while (sa[pos[i]-1] + j && sa[pos[i]] + j < n 
+            while (sa[pos[i]-1] + j < n && sa[pos[i]] + j < n 
                 && s[sa[pos[i]-1] + j] == s[sa[pos[i]] + j]) j++;
             lcp[pos[i]] = j;
         }
